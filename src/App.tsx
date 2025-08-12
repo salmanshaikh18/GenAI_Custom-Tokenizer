@@ -174,16 +174,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </main>
-
-      {/* Mobile-Optimized Footer */}
-      <footer className="mt-8 sm:mt-12 border-t border-slate-800 bg-slate-900/50 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4">
-          <div className="flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm text-slate-400 space-y-2 sm:space-y-0">
-            <p>Built with React, TypeScript & Tailwind CSS</p>
-            <p>Advanced NLP Tokenizer • Production Ready</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

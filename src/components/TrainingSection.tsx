@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import type { ResultStatus } from '../types';
+import React, { useState } from "react";
+import type { ResultStatus } from "../types";
 
 interface TrainingSectionProps {
   onTrain: (texts: string[]) => void;
@@ -7,7 +7,11 @@ interface TrainingSectionProps {
   isTraining: boolean;
 }
 
-const TrainingSection: React.FC<TrainingSectionProps> = ({ onTrain, trainingStatus, isTraining }) => {
+const TrainingSection: React.FC<TrainingSectionProps> = ({
+  onTrain,
+  trainingStatus,
+  isTraining,
+}) => {
   const defaultTrainingData = `Hello world this is a comprehensive demo
 JavaScript TypeScript React tokenizer application with advanced features
 Natural language processing with modern web technology stack
@@ -19,10 +23,10 @@ Professional software development requires attention to code quality and testing
 
   const handleTrain = (): void => {
     const texts = trainingText
-      .split('\n')
-      .map(t => t.trim())
-      .filter(t => t.length > 0);
-    
+      .split("\n")
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0);
+
     if (texts.length === 0) return;
     onTrain(texts);
   };
@@ -32,11 +36,15 @@ Professional software development requires attention to code quality and testing
   };
 
   const clearText = (): void => {
-    setTrainingText('');
+    setTrainingText("");
   };
 
-  const lineCount = trainingText.split('\n').filter(t => t.trim().length > 0).length;
-  const wordCount = trainingText.split(/\s+/).filter(w => w.trim().length > 0).length;
+  const lineCount = trainingText
+    .split("\n")
+    .filter((t) => t.trim().length > 0).length;
+  const wordCount = trainingText
+    .split(/\s+/)
+    .filter((w) => w.trim().length > 0).length;
 
   return (
     <div className="bg-slate-800/50 backdrop-blur-lg rounded-xl border border-slate-700/50 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
@@ -67,7 +75,9 @@ Professional software development requires attention to code quality and testing
         <div className="relative">
           <textarea
             value={trainingText}
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setTrainingText(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+              setTrainingText(e.target.value)
+            }
             placeholder="Enter training text (one sentence per line)..."
             rows={6}
             className="w-full p-3 sm:p-4 bg-slate-900/50 border border-slate-600/50 rounded-lg font-mono text-xs sm:text-sm text-slate-100 
@@ -78,10 +88,10 @@ Professional software development requires attention to code quality and testing
             Lines: {lineCount} | Words: {wordCount}
           </div>
         </div>
-        
+
         {/* Mobile-Optimized Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 mt-4 sm:mt-6">
-          <button 
+          <button
             onClick={handleTrain}
             disabled={isTraining || !trainingText.trim()}
             className="flex-1 bg-gradient-to-r from-green-500 to-blue-600 text-white px-4 sm:px-6 py-3 
@@ -102,21 +112,24 @@ Professional software development requires attention to code quality and testing
               </>
             )}
           </button>
-          
+
           {/* Single Button - Renamed */}
-          <button 
-            onClick={loadTestData}
-            disabled={isTraining}
-            className="sm:flex-none w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white px-4 py-3 rounded-lg 
-                       transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
-                       disabled:bg-slate-700 flex items-center justify-center space-x-2 font-semibold text-sm shadow-lg
-                       hover:shadow-xl transform hover:-translate-y-0.5 disabled:transform-none cursor-pointer"
-          >
-            <span>📝</span>
-            <span>Test with Dummy Data</span>
-          </button>
-          
-          <button 
+
+          {!trainingText && (
+            <button
+              onClick={loadTestData}
+              disabled={isTraining}
+              className="sm:flex-none w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white px-4 py-3 rounded-lg 
+                         transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+                         disabled:bg-slate-700 flex items-center justify-center space-x-2 font-semibold text-sm shadow-lg
+                         hover:shadow-xl transform hover:-translate-y-0.5 disabled:transform-none cursor-pointer"
+            >
+              <span>📝</span>
+              <span>Test with Dummy Data</span>
+            </button>
+          )}
+
+          <button
             onClick={clearText}
             disabled={isTraining}
             className="sm:flex-none w-full sm:w-auto border-2 border-red-500/50 text-red-400 hover:bg-red-500/10 hover:border-red-500 
@@ -127,16 +140,17 @@ Professional software development requires attention to code quality and testing
             <span>Clear</span>
           </button>
         </div>
-
         {/* Training Status */}
         {trainingStatus && (
-          <div className={`mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg border-l-4 shadow-inner ${
-            trainingStatus.type === 'success' 
-              ? 'bg-green-500/10 border-green-500 text-green-300' 
-              : trainingStatus.type === 'error'
-              ? 'bg-red-500/10 border-red-500 text-red-300'
-              : 'bg-blue-500/10 border-blue-500 text-blue-300'
-          }`}>
+          <div
+            className={`mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg border-l-4 shadow-inner ${
+              trainingStatus.type === "success"
+                ? "bg-green-500/10 border-green-500 text-green-300"
+                : trainingStatus.type === "error"
+                ? "bg-red-500/10 border-red-500 text-red-300"
+                : "bg-blue-500/10 border-blue-500 text-blue-300"
+            }`}
+          >
             <pre className="whitespace-pre-wrap font-mono text-xs sm:text-sm leading-relaxed">
               {trainingStatus.message}
             </pre>
