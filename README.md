@@ -1,6 +1,6 @@
 ## 🎯 What I Created
 
-I built a **professional React TypeScript tokenizer application** with a clean dark theme that demonstrates a complete custom tokenizer system. Here's the breakdown:
+A custom tokenizer in JavaScript that learns vocab from text, supports ENCODE/DECODE and handles special tokens.
 
 ## 📁 Project Structure
 
@@ -100,15 +100,6 @@ src/
    ↓
 8. Original Text Recovered
 ```
-
-## 🎯 Assignment Requirements Met
-
-✅ **Custom Tokenizer**: Built from scratch with vocabulary learning  
-✅ **Encode/Decode**: Full bidirectional text ↔ numbers conversion  
-✅ **Special Tokens**: Complete special token handling  
-✅ **Professional UI**: Clean, attractive interface  
-✅ **TypeScript**: Full type safety and modern development  
-✅ **React Architecture**: Component-based, scalable structure  
 
 ## 🚀 How to Use
 
